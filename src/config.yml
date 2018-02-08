@@ -1,0 +1,38 @@
+####################################################################
+######################## ESSENTIAL FEATURES ########################
+######################## MAIN CONFIGURATION ########################
+######################## HOPE YOU LIKE IT ##########################
+####################################################################
+
+## Plugin Prefix
+Prefix: "&cEssential&7Features &7| &c"
+
+## Enabled Modules
+Enabled Modules:
+  Gangs: true
+  Login: true
+  PerWorldGameMode: true
+  Discord:
+      Enabled: true
+      Reporting: true
+      Chat Sync: true
+      Command log: true
+
+## Discord options
+Discord:
+    Bot Token: "[INSERT TOKEN]"
+    Command Prefix: "!"
+
+## JOIN MESSAGES
+Unique Join Message: "&b%player% &7joined for the first time (&b#%id%&7)"
+Join Message: "&bPlayer %player% has joined the game!"
+Leave Message: "&cPlayer %player% has left the game!"
+Unique: 0
+
+## PER WORLD GAMEMODE
+Worlds:
+    world: creative
+
+## MOTD AND MAX PLAYERS
+Server MOTD: "&cEssential&7Features &7- &6Welcome!"
+Max Players: 200

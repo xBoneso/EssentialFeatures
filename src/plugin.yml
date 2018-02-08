@@ -1,0 +1,26 @@
+name: EssentialFeatures
+version: 1.0
+main: me.xbones.essentialfeatures.EssentialFeatures
+description: Essential Features for your Minecraft server!
+softdepend: [Discord-Bot-API]
+commands:
+    ef:
+        description: EssentialFeatures main command!
+        usage: /ef
+        aliases: [essentialfeatures]
+    gang:
+        description: DemonicGangs Main command!
+        usage: /gang
+        aliases: [gangs]
+    gms:
+        description: Set gamemode to survival!
+        usage: /gms
+    gmc:
+        description: Set gamemode to creative!
+        usage: /gmc
+    gmsp:
+        description: Set gamemode to spectator!
+        usage: /gmsp
+    gma:
+        description: Set gamemode to adventure!
+        usage: /gma
