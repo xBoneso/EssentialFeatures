@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="spigot">
+    <archive path="C:/Users/Osayed/Desktop/spigot.jar" />
+  </library>
+  <library name="Discord-Bot-APIv1.2 (1)">
+    <archive path="C:/Users/Osayed/Downloads/Discord-Bot-APIv1.2 (1).jar" />
+  </library>
+</eclipse-userlibraries>
+
