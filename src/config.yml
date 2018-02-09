@@ -17,6 +17,9 @@ Enabled Modules:
       Reporting: true
       Chat Sync: true
       Command log: true
+  Bar: true
+  Scoreboard: true
+  Damage Indicators: true
 
 ## Discord options
 Discord:
@@ -36,3 +39,46 @@ Worlds:
 ## MOTD AND MAX PLAYERS
 Server MOTD: "&cEssential&7Features &7- &6Welcome!"
 Max Players: 200
+
+## THE BAR
+Bar Title: "&aThe Bartender"
+Bar Items:
+    1:
+       Name: "&cFirst Item"
+       Price: 3000
+       Prize: 10000
+    2:
+       Name: "&cSecond Item"
+       Price: 10000
+       Prize: 20000
+    3:
+       Name: "&cThird Item"
+       Price: 20000
+       Prize: 30000
+    4:
+       Name: "&cFourth Item"
+       Price: 20000
+       Prize: 30000
+    5:
+       Name: "&cFifth Item"
+       Price: 20000
+       Prize: 30000
+    6:
+       Name: "&cSixth Item"
+       Price: 20000
+       Prize: 30000
+    7:
+       Name: "&cSeventh Item"
+       Price: 20000
+       Prize: 30000
+
+## SCOREBOARD
+Scoreboard:
+   Title: "&cEssential&7Features"
+   Lines:
+      1: "cWelcome to my server!"
+      2: "----------------------"
+      3: "This is the third line!"
+      4: "Test"
+      5: "Test"
+      6: "Test again"

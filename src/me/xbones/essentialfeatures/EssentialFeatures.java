@@ -1,8 +1,6 @@
 package me.xbones.essentialfeatures;
 
-import me.xbones.essentialfeatures.commands.EFCommand;
-import me.xbones.essentialfeatures.commands.GameModeCMD;
-import me.xbones.essentialfeatures.commands.GangCommand;
+import me.xbones.essentialfeatures.commands.*;
 import me.xbones.essentialfeatures.events.*;
 import me.xbones.essentialfeatures.gang.Gang;
 import me.xbones.essentialfeatures.utils.DiscordUtils;
@@ -11,6 +9,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
 import org.bukkit.command.ConsoleCommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -25,13 +24,14 @@ public class EssentialFeatures extends JavaPlugin {
     private List<Gang> gangs = new ArrayList<>();
     private String prefix;
     private EssentialFeatures main;
+    public FileConfiguration config = this.getConfig();
     // VARIABLES //
 
     //onEnable of EssentialFeatures
     @Override
     public void onEnable() {
         main = this;
-       // gangs = utils.getGangs();
+        // gangs = utils.getGangs();
         this.getConfig().options().copyDefaults(true);
         saveDefaultConfig();
         getVariables();
@@ -51,16 +51,25 @@ public class EssentialFeatures extends JavaPlugin {
         this.getCommand("gmc").setExecutor(new GameModeCMD(this));
         this.getCommand("gmsp").setExecutor(new GameModeCMD(this));
         this.getCommand("gma").setExecutor(new GameModeCMD(this));
+        if(this.getConfig().getBoolean("Enabled Modules.Bar"))
+              this.getCommand("bar").setExecutor(new BarCommand(this));
+        this.getCommand("msg").setExecutor(new MSGCommand(this));
+        this.getCommand("heal").setExecutor(new HealCommand(this));
+        this.getCommand("info").setExecutor(new InfoCommand(this));
     }
 
     // REGISTERS EVENTS
     public void registerEvents() {
         this.getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         this.getServer().getPluginManager().registerEvents(new PlayerLeaveListener(this), this);
-        if(this.getConfig().getBoolean("Enabled Modules.PerWorldGameMode"))
+        if (this.getConfig().getBoolean("Enabled Modules.PerWorldGameMode"))
             this.getServer().getPluginManager().registerEvents(new WorldChangeListener(this), this);
         this.getServer().getPluginManager().registerEvents(new ServerListPingListener(this), this);
         this.getServer().getPluginManager().registerEvents(new MaxPlayersListener(this), this);
+        if(this.getConfig().getBoolean("Enabled Modules.Bar"))
+            this.getServer().getPluginManager().registerEvents(new BarInventoryClickListener(this), this);
+        if(this.getConfig().getBoolean("Enabled Modules.Scoreboard"))
+            this.getServer().getPluginManager().registerEvents(new CreateScoreboardListener(this), this);
     }
 
     // GET ALL VARIABLES
@@ -70,20 +79,25 @@ public class EssentialFeatures extends JavaPlugin {
 
     // ENABLES MODULES
     public void enableModules() {
-        if(this.getConfig().getBoolean("Enabled Modules.Discord.Enabled")) {
+        if (this.getConfig().getBoolean("Enabled Modules.Discord.Enabled")) {
             discordUtils.setupDiscordBot();
         }
-        if(this.getConfig().getBoolean("Enabled Modules.Gangs")){
+        if (this.getConfig().getBoolean("Enabled Modules.Gangs")) {
             utils.createGangsYML();
         }
-        if(this.getConfig().getBoolean("Enabled Modules.PerWorldGameMode")) {
-            for(World w : Bukkit.getWorlds()) {
+        if (this.getConfig().getBoolean("Enabled Modules.PerWorldGameMode")) {
+            for (World w : Bukkit.getWorlds()) {
                 this.getConfig().set("Worlds." + w.getName(), "SURVIVAL");
                 saveDefaultConfig();
             }
         }
     }
 
-    public List<Gang> getGangs() {return gangs;}
-    public String getPrefix() { return prefix;}
+    public List<Gang> getGangs() {
+        return gangs;
+    }
+
+    public String getPrefix() {
+        return prefix;
+    }
 }

@@ -27,42 +27,68 @@ public class GameModeCMD implements CommandExecutor {
         if (sender instanceof Player) {
             if(args.length == 0) {
                 if (cmd.getName().equalsIgnoreCase("gmc")) {
-                    Player p = (Player) sender;
-                    p.setGameMode(GameMode.CREATIVE);
-                    p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set your gamemode to Creative."));
+                    if(sender.hasPermission("ef.gamemode.creative")) {
+                        Player p = (Player) sender;
+                        p.setGameMode(GameMode.CREATIVE);
+                        p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set your gamemode to Creative."));
+                    } else
+                    {
+                        sender.sendMessage(TextUtils.color(main.getPrefix() + " &cYou do not have access to this command."));
+                    }
                 } else if (cmd.getName().equalsIgnoreCase("gms")) {
-                    Player p = (Player) sender;
-                    p.setGameMode(GameMode.SURVIVAL);
-                    p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set your gamemode to Survival."));
+                    if(sender.hasPermission("ef.gamemode.survival")) {
+                        Player p = (Player) sender;
+                        p.setGameMode(GameMode.SURVIVAL);
+                        p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set your gamemode to Survival."));
+                    } else
+                        sender.sendMessage(TextUtils.color(main.getPrefix() + " &cYou do not have access to this command."));
                 } else if (cmd.getName().equalsIgnoreCase("gmsp")) {
-                    Player p = (Player) sender;
-                    p.setGameMode(GameMode.SPECTATOR);
-                    p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set your gamemode to Spectator."));
-
+                    if(sender.hasPermission("ef.gamemode.spectator")) {
+                        Player p = (Player) sender;
+                        p.setGameMode(GameMode.SPECTATOR);
+                        p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set your gamemode to Spectator."));
+                    } else {
+                        sender.sendMessage(TextUtils.color(main.getPrefix() + " &cYou do not have access to this command."));
+                    }
                 } else if (cmd.getName().equalsIgnoreCase("gma")) {
-                    Player p = (Player) sender;
-                    p.setGameMode(GameMode.SPECTATOR);
-                    p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set your gamemode to Adventure."));
-
+                    if(sender.hasPermission("ef.gamemode.gma")) {
+                        Player p = (Player) sender;
+                        p.setGameMode(GameMode.ADVENTURE);
+                        p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set your gamemode to Adventure."));
+                    } else {
+                        sender.sendMessage(TextUtils.color(main.getPrefix() + " &cYou do not have access to this command."));
+                    }
                 }
             } else {
                 Player p = (Player) sender;
                 Player target = Bukkit.getPlayer(args[0]);
                 if(target != null){
                     if (cmd.getName().equalsIgnoreCase("gmc")) {
-                        target.setGameMode(GameMode.CREATIVE);
-                        p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set " + target.getName() +"'s gamemode to Creative."));
+                        if(sender.hasPermission("ef.gamemode.gmc")) {
+                            target.setGameMode(GameMode.CREATIVE);
+                            p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set " + target.getName() + "'s gamemode to Creative."));
+                        } else
+                            sender.sendMessage(TextUtils.color(main.getPrefix() + " &cYou do not have access to this command."));
                     } else if (cmd.getName().equalsIgnoreCase("gms")) {
-                        target.setGameMode(GameMode.SURVIVAL);
-                        p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set " + target.getName() +"'s gamemode to Survival."));
+                        if(sender.hasPermission("ef.gamemode.gms")) {
+                            target.setGameMode(GameMode.SURVIVAL);
+                            p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set " + target.getName() + "'s gamemode to Survival."));
+                        } else {
+                            sender.sendMessage(TextUtils.color(main.getPrefix() + " &cYou do not have access to this command."));
+                        }
                     } else if (cmd.getName().equalsIgnoreCase("gmsp")) {
-                        target.setGameMode(GameMode.SPECTATOR);
-                        p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set " + target.getName() +"'s gamemode to Spectator."));
-
+                        if(sender.hasPermission("ef.gamemode.gmsp")) {
+                            target.setGameMode(GameMode.SPECTATOR);
+                            p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set " + target.getName() + "'s gamemode to Spectator."));
+                        } else {
+                            sender.sendMessage(TextUtils.color(main.getPrefix() + " &cYou do not have access to this command."));
+                        }
                     } else if (cmd.getName().equalsIgnoreCase("gma")) {
-                        target.setGameMode(GameMode.SPECTATOR);
-                        p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set " + target.getName() + "'s gamemode to Adventure."));
-
+                        if(sender.hasPermission("ef.gamemode.gma")) {
+                            target.setGameMode(GameMode.ADVENTURE);
+                            p.sendMessage(TextUtils.color(main.getPrefix() + " &aYou have set " + target.getName() + "'s gamemode to Adventure."));
+                        } else
+                            sender.sendMessage(TextUtils.color(main.getPrefix() + " &cYou do not have access to this command."));
                     }
 
                 } else {

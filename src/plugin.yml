@@ -24,3 +24,16 @@ commands:
     gma:
         description: Set gamemode to adventure!
         usage: /gma
+    bar:
+        description: Opens the bar!
+        usage: /bar
+    msg:
+        description: Message someone!
+        usage: /msg
+        aliases: [pm]
+    heal:
+        description: Heal a player!
+        usage: /heal
+    info:
+        description: Get information of a player!
+        usage: /info
